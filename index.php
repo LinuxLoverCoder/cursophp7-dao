@@ -32,11 +32,23 @@ require_once("config.php");
 
 //carrega um usuário usando o login e a senha
 
-$usuario = new Usuario();
+//$usuario = new Usuario();
+//$usuario->login("jose", "123456");
+//
+//echo $usuario;
 
-$usuario->login("jose", "123456");
+//Criando um novo usuário INSERT
+
+//$aluno = new Usuario("aluno", "@aluno");
+
+//$aluno->insert();
+
+//echo $aluno;
+
+$usuario = new Usuario();
+$usuario->loadById(8);
+
+$usuario->update("professor", "12344411");
 
 echo $usuario;
-
-
  ?>
