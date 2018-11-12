@@ -67,9 +67,12 @@ class Usuario {
 		));
 
 		if (count($results[0]) > 0){
-
-			
-		}
+                    $row = $results [0];
+                    $this->setIdusuario($row['idusuario']);
+                    $this->setDeslogin($row['deslogin']);
+                    $this->setDessenha($row['dessenha']);
+                    $this->setDtcadastro(new DateTime($row['dtcadastro']));
+        }
 
 
 
@@ -160,7 +163,7 @@ public function insert(){
 
 }
 
-public function update($login, $password){
+public function update( $login, $password){
 
 
 $this->setDeslogin($login);
@@ -171,7 +174,7 @@ $sql = new Sql();
 $sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
 
 ':LOGIN'=>$this->getDeslogin(),
-'PASSWORD'=>$this->getDessenha(),
+':PASSWORD'=>$this->getDessenha(),
 ':ID'=>$this->getIdusuario()
 
 ));
@@ -180,8 +183,22 @@ $sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHER
 
 }
 
+public function delete(){
+    
+    $sql = new Sql();
+    
+    $sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+        ':ID'=> $this->getIdusuario()
+    ));
+    
+    $this->setIdusuario(0);
+    $this->setDeslogin("");
+    $this->setDessenha("");
+    $this->setDtcadastro("");
+    
+}
 
-public function __construct($login = "", $password=""){
+public function __construct($login = "", $password = ""){
 
 	$this->setDeslogin($login);
 	$this->setDessenha($password);
@@ -199,7 +216,7 @@ public function __toString(){
 		"idusuario"=>$this->getIdusuario(),
 		"deslogin"=>$this->getDeslogin(),
 		"dessenha"=>$this->getDessenha(),
-		"dtcadastro"=>$this->getDtcadastro()->format("d/m/Y H:i:s")
+		"dtcadastro"=>$this->getDtcadastro()
 
 
 	));

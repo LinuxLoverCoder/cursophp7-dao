@@ -39,16 +39,27 @@ require_once("config.php");
 
 //Criando um novo usuário INSERT
 
-//$aluno = new Usuario("aluno", "@aluno");
+/*$aluno = new Usuario("aluno", "@aluno");
 
-//$aluno->insert();
+$aluno->insert();
 
-//echo $aluno;
+echo $aluno;*/
+
+//alterar um registro no db
 
 $usuario = new Usuario();
-$usuario->loadById(8);
 
-$usuario->update("professor", "12344411");
+$usuario->loadById(11);
+
+$usuario->update("prosdsdfessoras", "asddasdsa");
 
 echo $usuario;
+//deleta registros na tabela
+/*
+$usuario = new Usuario();
+$usuario->loadByid(10);
+$usuario->delete();
+
+echo $usuario;*/
+
  ?>
