@@ -66,13 +66,13 @@ class Usuario {
 
 		));
 
-		if (count($results[0]) > 0){
-                    $row = $results [0];
-                    $this->setIdusuario($row['idusuario']);
-                    $this->setDeslogin($row['deslogin']);
-                    $this->setDessenha($row['dessenha']);
-                    $this->setDtcadastro(new DateTime($row['dtcadastro']));
-        }
+						if (count($results[0]) > 0){
+						$row = $results [0];
+						$this->setIdusuario($row['idusuario']);
+						$this->setDeslogin($row['deslogin']);
+						$this->setDessenha($row['dessenha']);
+						$this->setDtcadastro(new DateTime($row['dtcadastro']));
+						}
 
 
 
